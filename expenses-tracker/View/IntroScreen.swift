@@ -41,7 +41,7 @@ struct IntroScreen: View {
                 )
 
             }
-//            .frame(width: .infinity, alignment: .leading)
+            //            .frame(width: .infinity, alignment: .leading)
             .padding(.horizontal, 25)
 
             Spacer(minLength: 10)
