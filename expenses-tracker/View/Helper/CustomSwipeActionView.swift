@@ -30,9 +30,10 @@ struct SwipeableRow<Content: View, ActionView: View>: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            // Background Action Layer (Revealed during swipe)
             actionView
                 .frame(width: actionWidth)
+//                .padding(.horizontal, 10)
+
                 .onTapGesture {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                         offset = 0
@@ -44,7 +45,6 @@ struct SwipeableRow<Content: View, ActionView: View>: View {
                     onAction()
                 }
             
-            // Foreground Content Layer
             content
 //                .background(Color(.systemBackground)) // Block visual overlap
                 .offset(x: offset)
@@ -54,23 +54,18 @@ struct SwipeableRow<Content: View, ActionView: View>: View {
                         .onChanged { value in
                             let translation = value.translation.width
                             
-                            // Check if swiping from left to right (leading edge swipe)
                             if isSwiped {
-                                // If already open, let the user close it
                                 let newOffset = actionWidth + translation
                                 offset = max(0, min(newOffset, actionWidth + 30))
                             } else {
-                                // If closed, only allow rightward swipe up to width + rubber-banding
                                 offset = max(0, min(translation, actionWidth + 30))
                             }
                         }
                         .onEnded { value in
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                // Threshold to snap open is 50% of the action width
                                 if offset > (actionWidth * 0.5) {
                                     offset = actionWidth
                                     if !isSwiped {
-                                        // Light feedback when snapping open
                                         let generator = UIImpactFeedbackGenerator(style: .light)
                                         generator.impactOccurred()
                                     }

@@ -57,16 +57,31 @@ struct RecentView: View {
                                     destination: Text(txn.title)
                                 ) {
 
-                                    TransactionCardView(transaction: txn)
-                                        .swipeActions(edge: .leading) {
-                                            Button(
-                                                "star",
-                                                systemImage: "star.fill"
-                                            ) {
+                                    SwipeableRow(
+                                        actionWidth: 80,
+                                        onAction: {},
+                                        content: {
 
-                                            }.tint(.yellow)
+                                            TransactionCardView(
+                                                transaction: txn
+                                            )
+                                        },
+                                        actionView: {
 
-                                        }
+                                            ZStack {
+                                                Color.red
+                                                Image(systemName: "trash.fill")
+                                                    .foregroundColor(.white)
+                                            }
+                                            .cornerRadius(10)
+                                            .padding(.vertical, 10)
+                                            .padding(.horizontal, 10)
+                                            
+
+                                        },
+
+                                    )
+
                                 }
 
                             }
