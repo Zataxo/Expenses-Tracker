@@ -16,6 +16,8 @@ struct RecentView: View {
     @State private var selectedCategory: CategoryModel = .expenses
     @Namespace private var animation
 
+    @State private var showFilterView: Bool = false
+
     var body: some View {
         GeometryReader { geo in
             let size = geo.size
@@ -28,6 +30,8 @@ struct RecentView: View {
                         Section {
 
                             Button {
+
+                                showFilterView = true
 
                             } label: {
                                 Text(
@@ -45,16 +49,24 @@ struct RecentView: View {
 
                             ForEach(
                                 sampleTransactions.filter({ item in
-
-                                    item.category == selectedCategory.rawValue
+                                    item.category
+                                        == selectedCategory.rawValue
                                 })
                             ) { txn in
-
                                 NavigationLink(
                                     destination: Text(txn.title)
                                 ) {
 
                                     TransactionCardView(transaction: txn)
+                                        .swipeActions(edge: .leading) {
+                                            Button(
+                                                "star",
+                                                systemImage: "star.fill"
+                                            ) {
+
+                                            }.tint(.yellow)
+
+                                        }
                                 }
 
                             }
@@ -66,7 +78,32 @@ struct RecentView: View {
 
                     }
                     .padding(15)
-                }.background(.gray.opacity(0.15))
+                }
+                .background(.gray.opacity(0.15))
+                .navigationTitle("Recents")
+                .toolbar(.hidden, for: .automatic)
+                .overlay {
+                    if showFilterView {
+                        DateFilterView(
+                            start: startDate,
+                            end: endDate,
+                            onSubmit: { start, end in
+                                self.startDate = start
+                                self.endDate = end
+
+                                self.showFilterView = false
+
+                            },
+                            onClose: {
+                                self.showFilterView = false
+                            }
+                        )
+
+                        .transition(.move(edge: .leading))
+
+                    }
+
+                }.animation(.snappy, value: showFilterView)
 
             }
         }

@@ -39,14 +39,26 @@ struct TransactionCardView: View {
                 .fontWeight(.semibold)
 
         }
-        .padding(.horizontal,15)
-        .padding(.vertical,10)
-        .background(.background,in: .rect(cornerRadius: 10))
+        .padding(.horizontal, 15)
+        .padding(.vertical, 10)
+        .background(.background, in: .rect(cornerRadius: 10))
+//        .swipeActions(edge: .leading) {
+//
+//            Button(
+//                "star",
+//                systemImage: "star.fill"
+//            ) {
+//
+//            }.tint(.yellow)
+//
+//        }
     }
 }
 
 #Preview {
-    TransactionCardView(
-        transaction: sampleTransactions[0]
-    )
+    List {
+        TransactionCardView(
+            transaction: sampleTransactions[0]
+        )
+    }
 }
