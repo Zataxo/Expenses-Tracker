@@ -95,5 +95,22 @@ var sampleTransactions: [TransactionModel] = [
         category: .expenses,
         tintColor: tintColors.randomElement()!
     ),
+    
+        .init(
+        title: "Noon One",
+        remark: "Subscription",
+        amount: 7.99,
+        dateAdded: .now,
+        category: .expenses,
+        tintColor: tintColors.randomElement()!
+    ),
+    .init(
+        title: "Iphone 17 Pro",
+        remark: "Payment",
+        amount: 5600,
+        dateAdded: .now,
+        category: .expenses,
+        tintColor: tintColors.randomElement()!
+    ),
 
 ]

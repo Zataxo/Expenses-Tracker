@@ -28,11 +28,8 @@ struct RecentView: View {
                     LazyVStack(spacing: 10, pinnedViews: .sectionHeaders) {
 
                         Section {
-
                             Button {
-
                                 showFilterView = true
-
                             } label: {
                                 Text(
                                     "\(format(date: startDate)) to \(format(date: endDate))"
@@ -76,7 +73,6 @@ struct RecentView: View {
                                             .cornerRadius(10)
                                             .padding(.vertical, 10)
                                             .padding(.horizontal, 10)
-                                            
 
                                         },
 
