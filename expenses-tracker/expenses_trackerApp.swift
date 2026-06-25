@@ -5,6 +5,7 @@
 //  Created by Hassan Abdalla on 07/01/1448 AH.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
@@ -12,6 +13,8 @@ struct expenses_trackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+
         }
+        .modelContainer(for: [TransactionModel.self])
     }
 }

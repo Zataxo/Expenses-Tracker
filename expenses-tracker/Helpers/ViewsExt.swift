@@ -21,28 +21,35 @@ extension View {
             .frame(maxHeight: .infinity, alignment: alignment)
     }
 
-//     var safeArea: UIEdgeInsets {
-//        if let windowScene =
-//            (UIApplication.shared.connectedScenes.first as? UIWindowScene)
-//        {
-//            return windowScene.keyWindow?.safeAreaInsets ?? .zero
-//        }
-//
-//        return .zero
-//    }
-    
+    //     var safeArea: UIEdgeInsets {
+    //        if let windowScene =
+    //            (UIApplication.shared.connectedScenes.first as? UIWindowScene)
+    //        {
+    //            return windowScene.keyWindow?.safeAreaInsets ?? .zero
+    //        }
+    //
+    //        return .zero
+    //    }
+
     func format(date: Date, format: String = "dd - MMM yy") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: date)
-        
-        
+
     }
-    
+
     func currencyString(_ value: Double, allowedDigits: Int = 2) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.maximumFractionDigits = allowedDigits
         return formatter.string(from: .init(value: value)) ?? ""
+    }
+
+    var currencurySymbol: String {
+
+        let locale = Locale.current
+
+        return locale.currencySymbol ?? ""
+
     }
 }

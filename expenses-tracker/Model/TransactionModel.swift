@@ -5,11 +5,11 @@
 //  Created by Hassan Abdalla on 08/01/1448 AH.
 //
 
+import SwiftData
 import SwiftUI
 
-struct TransactionModel: Identifiable {
-
-    let id: UUID = .init()
+@Model
+class TransactionModel {
 
     var title: String
     var remark: String
@@ -33,10 +33,25 @@ struct TransactionModel: Identifiable {
         self.category = category.rawValue
         self.tintColor = tintColor.color
     }
-
+    
+    @Transient
     var color: Color {
         tintColors.first(where: { $0.color == tintColor })?.value
             ?? Constants.appTint
+    }
+    
+    @Transient
+    var tint: TintColorModel? {
+        return tintColors.first(where: { tint in
+            return tint.color == self.tintColor
+        })
+    }
+    
+    @Transient
+    var categoryItem: CategoryModel? {
+        return CategoryModel.allCases.first(where: { category in
+            return category.rawValue == self.category
+        })
     }
 
 }
@@ -95,8 +110,8 @@ var sampleTransactions: [TransactionModel] = [
         category: .expenses,
         tintColor: tintColors.randomElement()!
     ),
-    
-        .init(
+
+    .init(
         title: "Noon One",
         remark: "Subscription",
         amount: 7.99,

@@ -42,23 +42,19 @@ struct TransactionCardView: View {
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
         .background(.background, in: .rect(cornerRadius: 10))
-//        .swipeActions(edge: .leading) {
-//
-//            Button(
-//                "star",
-//                systemImage: "star.fill"
-//            ) {
-//
-//            }.tint(.yellow)
-//
-//        }
+        //        .swipeActions(edge: .leading) {
+        //
+        //            Button(
+        //                "star",
+        //                systemImage: "star.fill"
+        //            ) {
+        //
+        //            }.tint(.yellow)
+        //
+        //        }
     }
 }
 
 #Preview {
-    List {
-        TransactionCardView(
-            transaction: sampleTransactions[0]
-        )
-    }
+    ContentView()
 }

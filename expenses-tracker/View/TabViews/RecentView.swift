@@ -5,6 +5,7 @@
 //  Created by Hassan Abdalla on 08/01/1448 AH.
 //
 
+import SwiftData
 import SwiftUI
 
 struct RecentView: View {
@@ -13,10 +14,19 @@ struct RecentView: View {
     @State private var startDate: Date = .now.startOfMonth
     @State private var endDate: Date = .now.endOfMonth
 
+    @State private var showNewExpenseForm: Bool = false
+
     @State private var selectedCategory: CategoryModel = .expenses
     @Namespace private var animation
 
     @State private var showFilterView: Bool = false
+
+    @Query(
+        sort: [SortDescriptor(\TransactionModel.dateAdded, order: .reverse)],
+        animation: .snappy
+    ) private var transactions: [TransactionModel]
+
+    @Environment(\.modelContext) private var context
 
     var body: some View {
         GeometryReader { geo in
@@ -44,42 +54,79 @@ struct RecentView: View {
                             CustomSegmentedControl()
                                 .padding(.bottom, 10)
 
-                            ForEach(
-                                sampleTransactions.filter({ item in
-                                    item.category
-                                        == selectedCategory.rawValue
-                                })
-                            ) { txn in
-                                NavigationLink(
-                                    destination: Text(txn.title)
-                                ) {
-
-                                    SwipeableRow(
-                                        actionWidth: 80,
-                                        onAction: {},
-                                        content: {
-
-                                            TransactionCardView(
-                                                transaction: txn
-                                            )
-                                        },
-                                        actionView: {
-
-                                            ZStack {
-                                                Color.red
-                                                Image(systemName: "trash.fill")
-                                                    .foregroundColor(.white)
-                                            }
-                                            .cornerRadius(10)
-                                            .padding(.vertical, 10)
-                                            .padding(.horizontal, 10)
-
-                                        },
-
+                            Group {
+                                if transactions.isEmpty {
+                                    ContentUnavailableView {
+                                        Label(
+                                            "No Transactions Yet",
+                                            systemImage: "tray.on.tray"
+                                        )
+                                    } description: {
+                                        Text(
+                                            "Add your first transaction to start tracking your expenses."
+                                        )
+                                    } actions: {
+                                        Button("Add Transaction") {
+                                            self.showNewExpenseForm.toggle()
+                                        }
+                                        .buttonStyle(.borderedProminent)
+                                        .controlSize(.regular)
+                                    }
+                                    .transition(
+                                        .opacity.combined(
+                                            with: .scale(scale: 0.95)
+                                        )
                                     )
 
-                                }
+                                } else {
+                                    ForEach(
+                                        transactions.filter({ item in
+                                            item.category
+                                                == selectedCategory.rawValue
+                                        })
+                                    ) { txn in
 
+                                        NavigationLink(
+                                            destination: NewExpensesView(
+                                                transactionModel: txn
+                                            )
+                                        ) {
+                                            SwipeableRow(
+                                                actionWidth: 80,
+                                                onAction: {
+                                                    context.delete(txn)
+                                                },
+                                                content: {
+
+                                                    TransactionCardView(
+                                                        transaction: txn
+                                                    )
+                                                },
+                                                actionView: {
+
+                                                    ZStack {
+                                                        Color.red
+                                                        Image(
+                                                            systemName:
+                                                                "trash.fill"
+                                                        )
+                                                        .foregroundColor(.white)
+                                                    }
+                                                    .cornerRadius(10)
+                                                    .padding(.vertical, 10)
+                                                    .padding(.horizontal, 10)
+
+                                                },
+
+                                            )
+                                            //                                            .onTapGesture {
+                                            //                                                self.showNewExpenseForm.toggle()
+                                            //                                            }
+                                        }
+
+                                    }
+
+                                }
                             }
 
                         } header: {
@@ -92,6 +139,9 @@ struct RecentView: View {
                 }
                 .background(.gray.opacity(0.15))
                 .navigationTitle("Recents")
+                .navigationDestination(isPresented: $showNewExpenseForm) {
+                    NewExpensesView(transactionModel: nil)
+                }
                 .toolbar(.hidden, for: .automatic)
                 .overlay {
                     if showFilterView {
@@ -147,6 +197,7 @@ struct RecentView: View {
             Spacer(minLength: 0)
 
             NavigationLink {
+                NewExpensesView()
 
             } label: {
                 Image(systemName: "plus")
