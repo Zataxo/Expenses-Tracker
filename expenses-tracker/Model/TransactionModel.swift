@@ -33,20 +33,20 @@ class TransactionModel {
         self.category = category.rawValue
         self.tintColor = tintColor.color
     }
-    
+
     @Transient
     var color: Color {
         tintColors.first(where: { $0.color == tintColor })?.value
             ?? Constants.appTint
     }
-    
+
     @Transient
     var tint: TintColorModel? {
         return tintColors.first(where: { tint in
             return tint.color == self.tintColor
         })
     }
-    
+
     @Transient
     var categoryItem: CategoryModel? {
         return CategoryModel.allCases.first(where: { category in

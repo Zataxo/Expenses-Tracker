@@ -21,11 +21,6 @@ struct RecentView: View {
 
     @State private var showFilterView: Bool = false
 
-    @Query(
-        sort: [SortDescriptor(\TransactionModel.dateAdded, order: .reverse)],
-        animation: .snappy
-    ) private var transactions: [TransactionModel]
-
     @Environment(\.modelContext) private var context
 
     var body: some View {
@@ -49,84 +44,104 @@ struct RecentView: View {
                             }
                             .hSpacing(.leading)
 
-                            CardView(income: 2499, expense: 4098)
-
-                            CustomSegmentedControl()
-                                .padding(.bottom, 10)
-
-                            Group {
-                                if transactions.isEmpty {
-                                    ContentUnavailableView {
-                                        Label(
-                                            "No Transactions Yet",
-                                            systemImage: "tray.on.tray"
-                                        )
-                                    } description: {
-                                        Text(
-                                            "Add your first transaction to start tracking your expenses."
-                                        )
-                                    } actions: {
-                                        Button("Add Transaction") {
-                                            self.showNewExpenseForm.toggle()
-                                        }
-                                        .buttonStyle(.borderedProminent)
-                                        .controlSize(.regular)
-                                    }
-                                    .transition(
-                                        .opacity.combined(
-                                            with: .scale(scale: 0.95)
-                                        )
+                            FilterTransactionView(
+                                startDate: startDate,
+                                endDate: endDate
+                            ) { transactions in
+                                CardView(
+                                    income: total(
+                                        transactions,
+                                        category: .income
+                                    ),
+                                    expense: total(
+                                        transactions,
+                                        category: .expenses
                                     )
+                                )
 
-                                } else {
-                                    ForEach(
-                                        transactions.filter({ item in
-                                            item.category
-                                                == selectedCategory.rawValue
-                                        })
-                                    ) { txn in
+                                CustomSegmentedControl()
+                                    .padding(.bottom, 10)
 
-                                        NavigationLink(
-                                            destination: NewExpensesView(
-                                                transactionModel: txn
+                                Group {
+                                    if transactions.isEmpty {
+                                        ContentUnavailableView {
+                                            Label(
+                                                "No Transactions Yet",
+                                                systemImage: "tray.on.tray"
                                             )
-                                        ) {
-                                            SwipeableRow(
-                                                actionWidth: 80,
-                                                onAction: {
-                                                    context.delete(txn)
-                                                },
-                                                content: {
+                                        } description: {
+                                            Text(
+                                                "Add your first transaction to start tracking your expenses."
+                                            )
+                                        } actions: {
+                                            Button("Add Transaction") {
+                                                self.showNewExpenseForm.toggle()
+                                            }
+                                            .buttonStyle(.borderedProminent)
+                                            .controlSize(.regular)
+                                        }
+                                        .transition(
+                                            .opacity.combined(
+                                                with: .scale(scale: 0.95)
+                                            )
+                                        )
 
-                                                    TransactionCardView(
-                                                        transaction: txn
-                                                    )
-                                                },
-                                                actionView: {
+                                    } else {
+                                        ForEach(
+                                            transactions.filter({ item in
+                                                item.category
+                                                    == selectedCategory.rawValue
+                                            })
+                                        ) { txn in
 
-                                                    ZStack {
-                                                        Color.red
-                                                        Image(
-                                                            systemName:
-                                                                "trash.fill"
+                                            NavigationLink(
+                                                destination: TransactionView(
+                                                    transactionModel: txn
+                                                )
+                                            ) {
+                                                SwipeableRow(
+                                                    actionWidth: 80,
+                                                    onAction: {
+                                                        context.delete(txn)
+                                                    },
+                                                    content: {
+
+                                                        TransactionCardView(
+                                                            transaction: txn
                                                         )
-                                                        .foregroundColor(.white)
-                                                    }
-                                                    .cornerRadius(10)
-                                                    .padding(.vertical, 10)
-                                                    .padding(.horizontal, 10)
+                                                    },
+                                                    actionView: {
 
-                                                },
+                                                        ZStack {
+                                                            Color.red
+                                                            Image(
+                                                                systemName:
+                                                                    "trash.fill"
+                                                            )
+                                                            .foregroundColor(
+                                                                .white
+                                                            )
+                                                        }
+                                                        .cornerRadius(10)
+                                                        .padding(.vertical, 10)
+                                                        .padding(
+                                                            .horizontal,
+                                                            10
+                                                        )
 
-                                            )
-                                            //                                            .onTapGesture {
-                                            //                                                self.showNewExpenseForm.toggle()
-                                            //                                            }
+                                                    },
+
+                                                )
+                                                //                                            .onTapGesture {
+                                                //                                                self.showNewExpenseForm.toggle()
+                                                //                                            }
+                                            }
+
                                         }
 
                                     }
-
                                 }
+
                             }
 
                         } header: {
@@ -140,7 +155,7 @@ struct RecentView: View {
                 .background(.gray.opacity(0.15))
                 .navigationTitle("Recents")
                 .navigationDestination(isPresented: $showNewExpenseForm) {
-                    NewExpensesView(transactionModel: nil)
+                    TransactionView(transactionModel: nil)
                 }
                 .toolbar(.hidden, for: .automatic)
                 .overlay {
@@ -159,7 +174,6 @@ struct RecentView: View {
                                 self.showFilterView = false
                             }
                         )
-
                         .transition(.move(edge: .leading))
 
                     }
@@ -197,7 +211,7 @@ struct RecentView: View {
             Spacer(minLength: 0)
 
             NavigationLink {
-                NewExpensesView()
+                TransactionView()
 
             } label: {
                 Image(systemName: "plus")

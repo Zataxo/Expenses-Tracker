@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TransactionCardView: View {
     let transaction: TransactionModel
+    var showCategory: Bool = false
     var body: some View {
         HStack(spacing: 12) {
 
@@ -31,6 +32,17 @@ struct TransactionCardView: View {
                     .font(.caption2)
                     .foregroundColor(.gray)
 
+                if self.showCategory {
+                    Text(transaction.category)
+                        .font(.caption2)
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 2)
+                        .background(
+                            transaction.categoryItem == .expenses
+                                ? Color.red.gradient : Color.green.gradient,
+                            in: .capsule
+                        )
+                }
             }
             .lineLimit(1)
             .hSpacing(.leading)
@@ -42,16 +54,7 @@ struct TransactionCardView: View {
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
         .background(.background, in: .rect(cornerRadius: 10))
-        //        .swipeActions(edge: .leading) {
-        //
-        //            Button(
-        //                "star",
-        //                systemImage: "star.fill"
-        //            ) {
-        //
-        //            }.tint(.yellow)
-        //
-        //        }
+
     }
 }
 

@@ -52,4 +52,15 @@ extension View {
         return locale.currencySymbol ?? ""
 
     }
+
+    func total(_ transactions: [TransactionModel], category: CategoryModel)
+        -> Double
+    {
+        transactions
+            .filter { txn in txn.categoryItem == category }
+            .reduce(0) { initialValue, txn in
+                txn.amount + initialValue
+            }
+    }
+
 }

@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct NewExpensesView: View {
+struct TransactionView: View {
 
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
@@ -227,6 +227,6 @@ struct NewExpensesView: View {
 
 #Preview {
     NavigationStack {
-        NewExpensesView()
+        TransactionView()
     }
 }
