@@ -55,6 +55,7 @@
 		F54948CE2FF001FA00B9AB9D /* Exceptions for "expenses-tracker" folder in "StatsWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Assets.xcassets,
 				Helpers/Constants.swift,
 				Helpers/DateExt.swift,
 				Helpers/ViewsExt.swift,
@@ -65,6 +66,19 @@
 				View/Helper/FilterTransactionView.swift,
 			);
 			target = F54948B62FF0005900B9AB9D /* StatsWidgetExtension */;
+		};
+		F54949662FF0341800B9AB9D /* Exceptions for "AppPreview" folder in "expenses-tracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				add_transaction.png,
+				"exp-tracker.png",
+				first_launch.png,
+				graph_screen.png,
+				home_screen.png,
+				setting_screen.png,
+				widget.png,
+			);
+			target = F582557B2FE9BBFB003F1CED /* expenses-tracker */;
 		};
 		F5ACC1B52FEC27F100FC4466 /* Exceptions for "expenses-tracker" folder in "expenses-tracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -82,6 +96,14 @@
 				F54948CC2FF0005A00B9AB9D /* Exceptions for "StatsWidget" folder in "StatsWidgetExtension" target */,
 			);
 			path = StatsWidget;
+			sourceTree = "<group>";
+		};
+		F54949502FF033C700B9AB9D /* AppPreview */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F54949662FF0341800B9AB9D /* Exceptions for "AppPreview" folder in "expenses-tracker" target */,
+			);
+			path = AppPreview;
 			sourceTree = "<group>";
 		};
 		F582557E2FE9BBFB003F1CED /* expenses-tracker */ = {
@@ -127,6 +149,7 @@
 		F58255732FE9BBFB003F1CED = {
 			isa = PBXGroup;
 			children = (
+				F54949502FF033C700B9AB9D /* AppPreview */,
 				F54949042FF0044E00B9AB9D /* StatsWidgetExtension.entitlements */,
 				F582557E2FE9BBFB003F1CED /* expenses-tracker */,
 				F54948BD2FF0005900B9AB9D /* StatsWidget */,
@@ -161,6 +184,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				F54948BD2FF0005900B9AB9D /* StatsWidget */,
+				F54949502FF033C700B9AB9D /* AppPreview */,
 			);
 			name = StatsWidgetExtension;
 			packageProductDependencies = (
@@ -469,7 +493,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "expenses-tracker/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Expenses Tracker";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = Description;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -506,7 +530,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "expenses-tracker/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Expenses Tracker";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = Description;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

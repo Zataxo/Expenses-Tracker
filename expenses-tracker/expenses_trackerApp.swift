@@ -11,9 +11,12 @@ import WidgetKit
 
 @main
 struct expenses_trackerApp: App {
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(isDarkMode ? .dark : .light)
                 .onAppear{
                     WidgetCenter.shared.reloadAllTimelines()
                 }

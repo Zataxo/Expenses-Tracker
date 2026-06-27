@@ -15,6 +15,7 @@ struct SettingView: View {
     @AppStorage("lockWhenAppGoesBackground") private
         var lockWhenAppGoesBackground: Bool =
             false
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
 
     @State private var isOn: Bool = false
     var body: some View {
@@ -26,6 +27,11 @@ struct SettingView: View {
 
                     TextField("Hassan Abdalla", text: $userName)
 
+                }
+                
+                Section("Theme") {
+                    Toggle("Dark Mode", isOn: $isDarkMode)
+                        .toggleStyle(SwitchToggleStyle(tint: Constants.appTint))
                 }
 
                 Section("App Lock") {
