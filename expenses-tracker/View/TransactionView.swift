@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import WidgetKit
 
 struct TransactionView: View {
 
@@ -101,7 +102,9 @@ struct TransactionView: View {
             .padding(15)
 
         }
-        .navigationTitle("Add Transaction")
+        .navigationTitle(
+            transactionModel == nil ? "Add Transaction" : "Edit Transaction"
+        )
         .background(.gray.opacity(0.15))
         .toolbar {
 
@@ -151,6 +154,7 @@ struct TransactionView: View {
             context.insert(transaction)
 
         }
+        WidgetCenter.shared.reloadAllTimelines()
 
         dismiss()
 

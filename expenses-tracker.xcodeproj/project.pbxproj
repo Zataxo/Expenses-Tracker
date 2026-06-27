@@ -6,11 +6,66 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F54948BA2FF0005900B9AB9D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54948B92FF0005900B9AB9D /* WidgetKit.framework */; };
+		F54948BC2FF0005900B9AB9D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54948BB2FF0005900B9AB9D /* SwiftUI.framework */; };
+		F54948C72FF0005A00B9AB9D /* StatsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F54948B72FF0005900B9AB9D /* StatsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F54948C52FF0005A00B9AB9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F58255742FE9BBFB003F1CED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F54948B62FF0005900B9AB9D;
+			remoteInfo = StatsWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F54948C82FF0005A00B9AB9D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F54948C72FF0005A00B9AB9D /* StatsWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F54948B72FF0005900B9AB9D /* StatsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StatsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F54948B92FF0005900B9AB9D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F54948BB2FF0005900B9AB9D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F54949042FF0044E00B9AB9D /* StatsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatsWidgetExtension.entitlements; sourceTree = "<group>"; };
 		F582557C2FE9BBFB003F1CED /* expenses-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "expenses-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F54948CC2FF0005A00B9AB9D /* Exceptions for "StatsWidget" folder in "StatsWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F54948B62FF0005900B9AB9D /* StatsWidgetExtension */;
+		};
+		F54948CE2FF001FA00B9AB9D /* Exceptions for "expenses-tracker" folder in "StatsWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Helpers/Constants.swift,
+				Helpers/DateExt.swift,
+				Helpers/ViewsExt.swift,
+				Model/CategoryModel.swift,
+				Model/TintColorModel.swift,
+				Model/TransactionModel.swift,
+				View/Helper/CardView.swift,
+				View/Helper/FilterTransactionView.swift,
+			);
+			target = F54948B62FF0005900B9AB9D /* StatsWidgetExtension */;
+		};
 		F5ACC1B52FEC27F100FC4466 /* Exceptions for "expenses-tracker" folder in "expenses-tracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -21,10 +76,19 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F54948BD2FF0005900B9AB9D /* StatsWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F54948CC2FF0005A00B9AB9D /* Exceptions for "StatsWidget" folder in "StatsWidgetExtension" target */,
+			);
+			path = StatsWidget;
+			sourceTree = "<group>";
+		};
 		F582557E2FE9BBFB003F1CED /* expenses-tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				F5ACC1B52FEC27F100FC4466 /* Exceptions for "expenses-tracker" folder in "expenses-tracker" target */,
+				F54948CE2FF001FA00B9AB9D /* Exceptions for "expenses-tracker" folder in "StatsWidgetExtension" target */,
 			);
 			path = "expenses-tracker";
 			sourceTree = "<group>";
@@ -32,6 +96,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F54948B42FF0005900B9AB9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F54948BC2FF0005900B9AB9D /* SwiftUI.framework in Frameworks */,
+				F54948BA2FF0005900B9AB9D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F58255792FE9BBFB003F1CED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,10 +115,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F54948B82FF0005900B9AB9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F54948B92FF0005900B9AB9D /* WidgetKit.framework */,
+				F54948BB2FF0005900B9AB9D /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F58255732FE9BBFB003F1CED = {
 			isa = PBXGroup;
 			children = (
+				F54949042FF0044E00B9AB9D /* StatsWidgetExtension.entitlements */,
 				F582557E2FE9BBFB003F1CED /* expenses-tracker */,
+				F54948BD2FF0005900B9AB9D /* StatsWidget */,
+				F54948B82FF0005900B9AB9D /* Frameworks */,
 				F582557D2FE9BBFB003F1CED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				F582557C2FE9BBFB003F1CED /* expenses-tracker.app */,
+				F54948B72FF0005900B9AB9D /* StatsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,6 +147,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F54948B62FF0005900B9AB9D /* StatsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F54948CB2FF0005A00B9AB9D /* Build configuration list for PBXNativeTarget "StatsWidgetExtension" */;
+			buildPhases = (
+				F54948B32FF0005900B9AB9D /* Sources */,
+				F54948B42FF0005900B9AB9D /* Frameworks */,
+				F54948B52FF0005900B9AB9D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F54948BD2FF0005900B9AB9D /* StatsWidget */,
+			);
+			name = StatsWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = StatsWidgetExtension;
+			productReference = F54948B72FF0005900B9AB9D /* StatsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F582557B2FE9BBFB003F1CED /* expenses-tracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F58255872FE9BBFC003F1CED /* Build configuration list for PBXNativeTarget "expenses-tracker" */;
@@ -68,10 +176,12 @@
 				F58255782FE9BBFB003F1CED /* Sources */,
 				F58255792FE9BBFB003F1CED /* Frameworks */,
 				F582557A2FE9BBFB003F1CED /* Resources */,
+				F54948C82FF0005A00B9AB9D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F54948C62FF0005A00B9AB9D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				F582557E2FE9BBFB003F1CED /* expenses-tracker */,
@@ -93,6 +203,9 @@
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					F54948B62FF0005900B9AB9D = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					F582557B2FE9BBFB003F1CED = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -113,11 +226,19 @@
 			projectRoot = "";
 			targets = (
 				F582557B2FE9BBFB003F1CED /* expenses-tracker */,
+				F54948B62FF0005900B9AB9D /* StatsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F54948B52FF0005900B9AB9D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F582557A2FE9BBFB003F1CED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +249,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F54948B32FF0005900B9AB9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F58255782FE9BBFB003F1CED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,7 +265,77 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F54948C62FF0005A00B9AB9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F54948B62FF0005900B9AB9D /* StatsWidgetExtension */;
+			targetProxy = F54948C52FF0005A00B9AB9D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F54948C92FF0005A00B9AB9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = StatsWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 37TJBT8WLA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StatsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StatsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "zataxo.swift.expenses-tracker.StatsWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F54948CA2FF0005A00B9AB9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = StatsWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 37TJBT8WLA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StatsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StatsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "zataxo.swift.expenses-tracker.StatsWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F58255852FE9BBFC003F1CED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -264,6 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "expenses-tracker/expenses-tracker.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 37TJBT8WLA;
@@ -290,7 +489,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -300,6 +499,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "expenses-tracker/expenses-tracker.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 37TJBT8WLA;
@@ -326,7 +526,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -334,6 +534,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F54948CB2FF0005A00B9AB9D /* Build configuration list for PBXNativeTarget "StatsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F54948C92FF0005A00B9AB9D /* Debug */,
+				F54948CA2FF0005A00B9AB9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F58255772FE9BBFB003F1CED /* Build configuration list for PBXProject "expenses-tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

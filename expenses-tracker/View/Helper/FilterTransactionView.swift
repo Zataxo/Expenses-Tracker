@@ -64,6 +64,35 @@ struct FilterTransactionView<Content: View>: View {
         self.content = content
 
     }
+
+    init(
+        startDate: Date,
+        endDate: Date,
+        category: CategoryModel?,
+        @ViewBuilder content: @escaping ([TransactionModel]) -> Content
+    ) {
+
+        let categoryRawValue = category?.rawValue ?? ""
+
+        let predicates = #Predicate<TransactionModel> { txn in
+
+            (txn.dateAdded >= startDate && txn.dateAdded <= endDate)
+                && (categoryRawValue.isEmpty
+                    ? true : txn.category == categoryRawValue)
+
+        }
+
+        _transactions = Query(
+            filter: predicates,
+            sort: [
+                SortDescriptor(\TransactionModel.dateAdded, order: .reverse)
+            ],
+            animation: .snappy
+        )
+
+        self.content = content
+
+    }
     var body: some View {
         content(transactions)
     }

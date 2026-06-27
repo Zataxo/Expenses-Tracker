@@ -14,7 +14,7 @@ struct TintColorModel: Identifiable {
 
 }
 
-var tintColors: [TintColorModel] {
+ var tintColors: [TintColorModel] {
     [
         .init(color: "Red", value: .red),
         .init(color: "Blue", value: .blue),

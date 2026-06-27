@@ -7,14 +7,18 @@
 
 import SwiftData
 import SwiftUI
+import WidgetKit
 
 @main
 struct expenses_trackerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear{
+                    WidgetCenter.shared.reloadAllTimelines()
+                }
 
         }
-        .modelContainer(for: [TransactionModel.self])
+        .modelContainer(for: TransactionModel.self)
     }
 }

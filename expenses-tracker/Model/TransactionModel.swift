@@ -34,12 +34,14 @@ class TransactionModel {
         self.tintColor = tintColor.color
     }
 
+    @MainActor
     @Transient
     var color: Color {
         tintColors.first(where: { $0.color == tintColor })?.value
             ?? Constants.appTint
     }
 
+    @MainActor
     @Transient
     var tint: TintColorModel? {
         return tintColors.first(where: { tint in

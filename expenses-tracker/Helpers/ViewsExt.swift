@@ -53,7 +53,10 @@ extension View {
 
     }
 
-    func total(_ transactions: [TransactionModel], category: CategoryModel)
+    nonisolated func total(
+        _ transactions: [TransactionModel],
+        category: CategoryModel
+    )
         -> Double
     {
         transactions
