@@ -68,8 +68,8 @@ struct StatsWidget: Widget {
         }
         .supportedFamilies([.systemMedium])
         .contentMarginsDisabled()
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Epenses Overview")
+        .description("Expenses Overview for the month")
     }
 }
 
