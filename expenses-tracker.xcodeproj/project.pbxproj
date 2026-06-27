@@ -10,6 +10,8 @@
 		F54948BA2FF0005900B9AB9D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54948B92FF0005900B9AB9D /* WidgetKit.framework */; };
 		F54948BC2FF0005900B9AB9D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54948BB2FF0005900B9AB9D /* SwiftUI.framework */; };
 		F54948C72FF0005A00B9AB9D /* StatsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F54948B72FF0005900B9AB9D /* StatsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F54949CE2FF03A3200B9AB9D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F54949CD2FF03A3200B9AB9D /* README.md */; };
+		F54949CF2FF03A3200B9AB9D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F54949CD2FF03A3200B9AB9D /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,7 @@
 		F54948B92FF0005900B9AB9D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F54948BB2FF0005900B9AB9D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F54949042FF0044E00B9AB9D /* StatsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StatsWidgetExtension.entitlements; sourceTree = "<group>"; };
+		F54949CD2FF03A3200B9AB9D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F582557C2FE9BBFB003F1CED /* expenses-tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "expenses-tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -149,6 +152,7 @@
 		F58255732FE9BBFB003F1CED = {
 			isa = PBXGroup;
 			children = (
+				F54949CD2FF03A3200B9AB9D /* README.md */,
 				F54949502FF033C700B9AB9D /* AppPreview */,
 				F54949042FF0044E00B9AB9D /* StatsWidgetExtension.entitlements */,
 				F582557E2FE9BBFB003F1CED /* expenses-tracker */,
@@ -260,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F54949CE2FF03A3200B9AB9D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F54949CF2FF03A3200B9AB9D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
